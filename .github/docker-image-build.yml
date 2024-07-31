@@ -1,0 +1,51 @@
+name: Build Docker Images
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  find-dockerfiles:
+    runs-on: ubuntu-latest
+    outputs:
+      dockerfiles: ${{ steps.find.outputs.dockerfiles }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Find Dockerfiles
+      id: find
+      run: |
+        dockerfiles=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'Dockerfile' | xargs -I {} dirname {})
+        echo "::set-output name=dockerfiles::${dockerfiles}"
+
+  build:
+    needs: find-dockerfiles
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        path: ${{ fromJson(needs.find-dockerfiles.outputs.dockerfiles) }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v6
+      with:
+        context: ${{ matrix.path }}
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/app:latest
