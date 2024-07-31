@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        directory: [system,lang/go]
-        name: [devbox-system,debox-go]
+        directory: [system]
+        name: [devbox-system]
 
     steps:
     - name: Checkout code
@@ -25,7 +25,7 @@ jobs:
       id: getfile
       run: |
         DIFF_OUTPUT=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'Dockerfile')
-        echo "DIFF_OUTPUT=$DIFF_OUTPUT" >> $GITHUB_ENV
+        echo "DIFF_OUTPUT=$DIFF_OUTPUT"
         PARENT_DIRS=()
         for FILE_PATH in $DIFF_OUTPUT; do
           PARENT_DIR=$(dirname "$FILE_PATH" | awk -F'/' '{print $(NF-1)}')
@@ -37,7 +37,7 @@ jobs:
 
     - name: Echo output
       run: |
-        echo $changed_files
+        echo $PARENT_DIRS
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
