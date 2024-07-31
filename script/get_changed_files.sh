@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # 获取变更的文件列表
-DIFF_OUTPUT=$(git diff --name-only "$1" "$2" | grep 'Dockerfile')
+DIFF_OUTPUT=$(git diff --name-only "$1" "$2")
 
 # 提取上一级目录
 PARENT_DIRS=()
 for FILE_PATH in $DIFF_OUTPUT; do
-  PARENT_DIR=$(dirname "$FILE_PATH" | awk -F'/' '{print $(NF-1)}')
+  PARENT_DIR=$(dirname "$FILE_PATH" | awk -F'/' '{print $(NF)}')
   PARENT_DIRS+=("$PARENT_DIR")
 done
 
