@@ -15,6 +15,8 @@ RUN apt update && \
     # Clean up apt cache
     apt clean
 
+#ENV GO111MODULE=on
+
 # Set default working directory
 WORKDIR /root
 
