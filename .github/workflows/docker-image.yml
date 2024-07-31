@@ -30,7 +30,7 @@ jobs:
         PARENT_DIR=$(dirname "$FILE_PATH" | awk -F'/' '{print $(NF)}')
         PARENT_DIRS+=("$PARENT_DIR")
         done
-        echo "PARENT_DIRS=$PARENT_DIRS" >> $GITHUB_ENV
+        echo "PARENT_DIRS=${PARENT_DIRS}" >> $GITHUB_ENV
       shell: bash
 
     - name: Echo output
