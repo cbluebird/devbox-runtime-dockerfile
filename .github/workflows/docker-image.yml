@@ -24,8 +24,8 @@ jobs:
     - name: Get changed files
       id: getfile
       run: |
-        chmod +x get_changed_files.sh
-        ./get_changed_files.sh ${{ github.event.before }} ${{ github.sha }}
+        chmod +x script/get_changed_files.sh
+        script/get_changed_files.sh ${{ github.event.before }} ${{ github.sha }}
       shell: bash
 
     - name: Echo output
