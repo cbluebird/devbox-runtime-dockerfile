@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 获取变更的文件列表
-DIFF_OUTPUT=$(git diff --name-only "$1" "$2")
+DIFF_OUTPUT=$(git diff --name-only "$1" "$2"|grep Dockerfile)
 
 # 提取上一级目录
 PARENT_DIRS=()

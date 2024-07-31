@@ -14,6 +14,6 @@ for i in "${!DIFF_OUTPUT[@]}"; do
   echo "Building and pushing image for $DOCKERFILE_PATH with tag $PARENT_DIR:latest"
   docker buildx build --push \
     --file $DOCKERFILE_PATH \
-    --tag $DOCKER_USERNAME/"debox-"+$PARENT_DIR:latest \
+    --tag $DOCKER_USERNAME/"devbox-"+$PARENT_DIR:latest \
     .
 done
