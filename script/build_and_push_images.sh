@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# 从环境变量中读取DIFF_OUTPUT和PARENT_DIRS
-DIFF_OUTPUT=${{ env.DIFF_OUTPUT }}
-PARENT_DIRS=${{ env.PARENT_DIRS }}
+# # 从环境变量中读取DIFF_OUTPUT和PARENT_DIRS
+# DIFF_OUTPUT=${{ env.DIFF_OUTPUT }}
+# PARENT_DIRS=${{ env.PARENT_DIRS }}
 
 echo "PARENT_DIRS=$PARENT_DIRS"
 echo "DIFF_OUTPUT=$DIFF_OUTPUT"
@@ -14,6 +14,6 @@ for i in "${!DIFF_OUTPUT[@]}"; do
   echo "Building and pushing image for $DOCKERFILE_PATH with tag $PARENT_DIR:latest"
   docker buildx build --push \
     --file $DOCKERFILE_PATH \
-    --tag $DOCKER_USERNAME/"devbox-"+$PARENT_DIR:latest \
+    --tag ${{ secrets.DOCKER_USERNAME }}/devbox-$PARENT_DIR:latest \
     .
 done
