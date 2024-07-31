@@ -11,7 +11,7 @@ rm go1.22.5.linux-amd64.tar.gz
 ENV GOPATH=/go
 ENV PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 ENV GOPROXY=https://goproxy.cn,direct
-# ENV GO111MODULE=on
+ENV GO111MODULE=on
 
 # Set default working directory
 WORKDIR /root
