@@ -43,9 +43,9 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
-      uses: docker/build-push-action@v6
-      with:
-        context: ./${{ matrix.directory }}
-        file: ./${{ matrix.directory }}/Dockerfile
-        push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/${{ matrix.name}}:latest
+      run: |
+        chmod +x script/build_and_push_images.sh
+        script/build_and_push_images.sh
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      shell: bash
