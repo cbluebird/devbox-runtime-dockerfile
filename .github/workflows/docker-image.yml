@@ -3,29 +3,14 @@ name: Build Docker Images
 on:
   push:
     branches: ['main']
-
+    
 jobs:
-  find-dockerfiles:
-    runs-on: ubuntu-latest
-    outputs:
-      dockerfiles: ${{ steps.find.outputs.dockerfiles }}
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Find Dockerfiles
-      id: find
-      run: |
-        dockerfiles=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'Dockerfile' | xargs -I {} dirname {})
-        echo "::set-output name=dockerfiles::${dockerfiles}"
-
   build:
-    needs: find-dockerfiles
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        path: ${{ fromJson(needs.find-dockerfiles.outputs.dockerfiles) }}
+        dockerfile: [Dockerfile]
+        directory: [system]
 
     steps:
     - name: Checkout code
@@ -46,6 +31,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
       with:
-        context: ${{ matrix.path }}
+        context: ./${{ matrix.directory }}
+        file: ./${{ matrix.directory }}/${{ matrix.dockerfile }}
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/app:latest
