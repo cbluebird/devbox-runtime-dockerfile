@@ -24,14 +24,12 @@ jobs:
     - name: Get changed files
       id: getfile
       run: |
-        DIFF_OUTPUT=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'Dockerfile')
-        echo "DIFF_OUTPUT=$DIFF_OUTPUT"
+        DIFF_OUTPUT=$(git diff --name-only b8f5fdc1ecafcbf4fc7ded5a3a45fa2b63826067 5d164e52a5c8ffebf122096d43f962af8135db69)
         PARENT_DIRS=()
-        for FILE_PATH in $DIFF_OUTPUT; do
-          PARENT_DIR=$(dirname "$FILE_PATH" | awk -F'/' '{print $(NF-1)}')
-          PARENT_DIRS+=("$PARENT_DIR")
+        echo "$DIFF_OUTPUT" | while read -r FILE_PATH; do
+        PARENT_DIR=$(dirname "$FILE_PATH" | awk -F'/' '{print $(NF)}')
+        PARENT_DIRS+=("$PARENT_DIR")
         done
-        PARENT_DIRS_STRING=$(IFS=,; echo "${PARENT_DIRS[*]}")
         echo "PARENT_DIRS=$PARENT_DIRS_STRING" >> $GITHUB_ENV
       shell: bash
 
