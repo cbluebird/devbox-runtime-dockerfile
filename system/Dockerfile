@@ -13,7 +13,8 @@ RUN apt update && \
     make \
     git && \
     # Clean up apt cache
-    apt clean
+    apt clean && \
+    echo "Hello"
 
 # Set default working directory
 WORKDIR /root
