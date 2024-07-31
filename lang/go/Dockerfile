@@ -1,5 +1,5 @@
 # Use a base image with the specified platform
-FROM cbluebird/bevbox-system:latest
+FROM cbluebird/devbox-system:latest
 
 # Update apt sources and install required tools
 RUN curl -O https://dl.google.com/go/go1.22.5.linux-amd64.tar.gz && \

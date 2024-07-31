@@ -12,7 +12,7 @@ for i in "${!DIFF_OUTPUT[@]}"; do
   DOCKERFILE_PATH=${DIFF_OUTPUT[$i]}
   PARENT_DIR=${PARENT_DIRS[$i]}
   TAG="devbox-$PARENT_DIR:latest"
-  echo "Building and pushing image for $DOCKERFILE_PATH with tag $TAG And User as $DOCKERFILE_PATH"
+  echo "Building and pushing image for $DOCKERFILE_PATH with tag $TAG And User as $DOCKER_USERNAME"
   docker buildx build --push \
     --file $DOCKERFILE_PATH \
     --tag "$DOCKER_USERNAME/$TAG" \
