@@ -10,7 +10,6 @@ rm go1.22.5.linux-amd64.tar.gz
 # Set go env
 ENV GOPATH=/go
 ENV PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-ENV GO111MODULE=on
 ENV GOPROXY=https://goproxy.cn,direct
 
 # Set default working directory

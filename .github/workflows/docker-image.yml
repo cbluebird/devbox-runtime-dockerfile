@@ -24,10 +24,8 @@ jobs:
     - name: Get changed files
       id: getfile
       run: |
-        echo "Current SHA: ${{ github.sha }}"
-        echo "Previous SHA: ${{ github.event.before }}"
         changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs)
-        echo "Changed files: $changed_files"
+        echo $(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs) | grep 'Dockerfile' | awk -F/ '{print $1}' | uniq | paste -sd ',' -)"
         echo "changed_files=$changed_files" >> $GITHUB_ENV
       shell: bash
 
