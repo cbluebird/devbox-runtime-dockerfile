@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dockerfile: [Dockerfile]
-        directory: [system]
+        directory: [system,lang/go]
+        name: [devbox-system,debox-go]
 
     steps:
     - name: Checkout code
@@ -24,9 +24,15 @@ jobs:
     - name: Get changed files
       id: getfile
       run: |
-        changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs)
-        echo $(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | xargs) | grep 'Dockerfile' | awk -F/ '{print $1}' | uniq | paste -sd ',' -)"
-        echo "changed_files=$changed_files" >> $GITHUB_ENV
+        DIFF_OUTPUT=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'Dockerfile')
+        echo "DIFF_OUTPUT=$DIFF_OUTPUT" >> $GITHUB_ENV
+        PARENT_DIRS=()
+        for FILE_PATH in $DIFF_OUTPUT; do
+          PARENT_DIR=$(dirname "$FILE_PATH" | awk -F'/' '{print $(NF-1)}')
+          PARENT_DIRS+=("$PARENT_DIR")
+        done
+        PARENT_DIRS_STRING=$(IFS=,; echo "${PARENT_DIRS[*]}")
+        echo "PARENT_DIRS=$PARENT_DIRS_STRING" >> $GITHUB_ENV
       shell: bash
 
     - name: Echo output
@@ -46,6 +52,6 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         context: ./${{ matrix.directory }}
-        file: ./${{ matrix.directory }}/${{ matrix.dockerfile }}
+        file: ./${{ matrix.directory }}/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/app:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/${{ matrix.name}}:latest
