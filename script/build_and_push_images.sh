@@ -10,6 +10,9 @@ echo "DIFF_OUTPUT=$DIFF_OUTPUT"
 IFS=',' read -r -a DIFF_OUTPUT <<< $PARENT_DIRS
 IFS=',' read -r -a PARENT_DIRS <<< $DIFF_OUTPUT
 
+echo $DIFF_OUTPUT
+echo $PARENT_DIRS
+
 # 构建并推送每个Docker镜像
 for i in "${!DIFF_OUTPUT[@]}"; do
   DOCKERFILE_PATH=${DIFF_OUTPUT[$i]}
