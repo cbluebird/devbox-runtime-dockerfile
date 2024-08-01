@@ -17,9 +17,5 @@ RUN apt update && \
 
 # ENV GO111MODULE=on
 
-
 # Set default working directory
 WORKDIR /root
-
-# Entry point (modifiable as needed)
-CMD ["/bin/bash"]
