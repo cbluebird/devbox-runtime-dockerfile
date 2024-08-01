@@ -20,6 +20,7 @@ for i in "${!DIFF_OUTPUT_ARRAY[@]}"; do
   echo "Building and pushing image for $DOCKERFILE_PATH with tag $TAG and user as $DOCKER_USERNAME"
   docker buildx build --push \
     --file $DOCKERFILE_PATH \
+    --platform linux/amd64\
     --tag "$DOCKER_USERNAME/$TAG" \
     .
 done
