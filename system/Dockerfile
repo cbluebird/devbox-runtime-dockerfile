@@ -1,6 +1,5 @@
 # Use a base image with the specified platform
 FROM --platform=linux/amd64 ubuntu:latest
-LABEL org.opencontainers.image.source="https://github.com/cbluebird/devbox-runtime-dockerfile"
 
 # Update apt sources and install required tools
 RUN apt update && \
