@@ -1,5 +1,5 @@
 # Use a base image with the specified platform
-FROM --platform=linux/amd64 ubuntu:latest
+FROM ubuntu:latest
 
 # Update apt sources and install required tools
 RUN apt update && \
