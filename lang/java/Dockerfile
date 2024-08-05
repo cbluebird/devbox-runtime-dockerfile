@@ -18,8 +18,10 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+COPY /lang/java/settings.xml /opt/maven/apache-maven-3.8.6/conf/settings.xml
+
 # Set Java environment variables
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/settings.xml
 ENV PATH=$PATH:$JAVA_HOME/bin
 
 # Set default working directory
