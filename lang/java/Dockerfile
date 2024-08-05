@@ -1,5 +1,5 @@
 # Use a base image with the specified platform
-FROM cbluebird/devbox-system:latest
+FROM ghcr.io/cbluebird/devbox/devbox-system:latest
 
 # Install OpenJDK 17 and other necessary tools in a single layer
 RUN apt-get update && \
