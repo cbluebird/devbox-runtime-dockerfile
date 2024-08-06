@@ -1,5 +1,5 @@
 # Use a base image with the specified platform
-FROM cbluebird/devbox-system:latest
+FROM ghcr.io/cbluebird/devbox/devbox-system:latest
 
 # Install Node.js 20, npm, and TypeScript in a single layer
 RUN apt-get update && \
