@@ -14,8 +14,10 @@ RUN apt-get update && \
     openssh-client \
     openssh-server \
     && apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
+    rm -rf /var/lib/apt/lists/*
+
+# 设置 OpenSSH 环境
+RUN printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
     sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config && \
     sed -i 's/AllowTcpForwarding no/AllowTcpForwarding yes/g' /etc/ssh/sshd_config && \
     sed -i 's/GatewayPorts no/GatewayPorts yes/g' /etc/ssh/sshd_config && \
