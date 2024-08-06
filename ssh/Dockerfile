@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get install -y \
     logrotate \
     nano \
-    netcat \
+    netcat-openbsd \
     sudo \
     openssh-client \
     openssh-server \
