@@ -29,6 +29,4 @@ RUN chmod +x /usr/local/bin/startup.sh && \
     useradd -m -s /bin/bash sealos && \
     rm -rf /tmp/*
 
-ENTRYPOINT ["sudo -E /usr/local/bin/startup.sh"]
-
 EXPOSE 2222
