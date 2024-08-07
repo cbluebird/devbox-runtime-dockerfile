@@ -5,7 +5,8 @@ FROM ghcr.io/cbluebird/devbox/devbox-system:latest
 
 COPY /ssh/startup.sh /usr/local/bin/startup.sh
 
-RUN apt-get update && \
+RUN chmod +x /usr/local/bin/startup.sh && \
+    apt-get update && \
     apt-get install -y \
     logrotate \
     nano \
@@ -28,6 +29,6 @@ RUN apt-get update && \
     useradd -m -s /bin/bash sealos && \
     rm -rf /tmp/*
 
-ENTRYPOINT ["/usr/local/bin/startup.sh"]
+CMD ["/usr/local/bin/startup.sh"]
 
 EXPOSE 2222
