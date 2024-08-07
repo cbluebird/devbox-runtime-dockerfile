@@ -2,7 +2,6 @@ FROM ghcr.io/cbluebird/devbox/devbox-system:latest
 
 # set version label
 
-ARG USER_PASSWORD
 
 COPY /ssh/startup.sh /usr/local/bin/startup.sh
 
