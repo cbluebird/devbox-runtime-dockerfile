@@ -1,9 +1,6 @@
 # Use a base image with the specified platform
 FROM ghcr.io/cbluebird/devbox/devbox-ssh:latest
 
-
-
-
 # Update apt sources, install required tools, install pprof, and set environment variables in a single layer
 RUN curl -O https://dl.google.com/go/go1.22.5.linux-amd64.tar.gz && \
     tar -xvf go1.22.5.linux-amd64.tar.gz && \
