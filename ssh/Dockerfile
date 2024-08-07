@@ -28,6 +28,7 @@ RUN chmod +x /usr/local/bin/startup.sh && \
     echo 'Port 2222' >> /etc/ssh/sshd_config && \
     useradd -m -s /bin/bash sealos && \
     usermod -aG root sealos && \
+    echo 'sealos ALL=(ALL:ALL) ALL' >> /etc/sudoers && \
     rm -rf /tmp/*
 
 EXPOSE 2222
