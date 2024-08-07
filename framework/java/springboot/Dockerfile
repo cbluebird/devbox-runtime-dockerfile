@@ -6,5 +6,3 @@ COPY /framework/java/springboot/project /home/sealos/project
 
 RUN chown -R sealos:sealos /home/sealos/project && \
 chmod -R u+rw /home/sealos/project
-
-CMD [" tail -f /dev/null"]
