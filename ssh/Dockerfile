@@ -4,7 +4,7 @@ FROM ghcr.io/cbluebird/devbox/devbox-system:latest
 
 ARG USER_PASSWORD
 
-COPY startup.sh /usr/local/bin/startup.sh
+COPY /ssh/startup.sh /usr/local/bin/startup.sh
 
 RUN chmod +x /usr/local/bin/startup.sh && \
     apt-get update && \
