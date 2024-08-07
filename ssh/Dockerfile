@@ -5,8 +5,7 @@ FROM ghcr.io/cbluebird/devbox/devbox-system:latest
 
 COPY /ssh/startup.sh /usr/local/bin/startup.sh
 
-RUN chmod +x /usr/local/bin/startup.sh && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install -y \
     logrotate \
     nano \
@@ -32,6 +31,5 @@ RUN chmod +x /usr/local/bin/startup.sh && \
     rm -rf /tmp/*
 
 ENTRYPOINT ["/usr/local/bin/startup.sh"]
-COPY /ssh/root /
 
 EXPOSE 2222
