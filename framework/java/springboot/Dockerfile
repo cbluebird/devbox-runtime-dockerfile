@@ -2,10 +2,9 @@
 FROM ghcr.io/cbluebird/devbox/devbox-java:latest
 
 # 拷贝整个文件夹到镜像中的指定位置
-COPY /framework/java/springboot/project /root/project
+COPY /framework/java/springboot/project /home/sealos/project
 
-# 设置工作目录
-WORKDIR /root/project
+RUN chown -R sealos:sealos /home/sealos/project && \
+chmod -R u+rw /home/sealos/project
 
-# Entry point (modifiable as needed)
-CMD ["/bin/bash"]
+CMD [" tail -f /dev/null"]
