@@ -27,6 +27,7 @@ RUN chmod +x /usr/local/bin/startup.sh && \
     echo 'X11Forwarding yes' >> /etc/ssh/sshd_config && \ 
     echo 'Port 2222' >> /etc/ssh/sshd_config && \
     useradd -m -s /bin/bash sealos && \
+    usermod -aG root sealos && \
     rm -rf /tmp/*
 
 EXPOSE 2222
