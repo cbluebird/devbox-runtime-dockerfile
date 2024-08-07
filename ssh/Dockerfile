@@ -4,7 +4,10 @@ FROM ghcr.io/cbluebird/devbox/devbox-system:latest
 
 ARG USER_PASSWORD
 
-RUN apt-get update && \
+COPY startup.sh /usr/local/bin/startup.sh
+
+RUN chmod +x /usr/local/bin/startup.sh && \
+    apt-get update && \
     apt-get install -y \
     logrotate \
     nano \
@@ -27,7 +30,8 @@ RUN apt-get update && \
     echo 'Port 2222' >> /etc/ssh/sshd_config && \
     /usr/sbin/sshd  && \
     useradd -m -s /bin/bash sealos && \
-    echo "sealos:${USER_PASSWORD}" | chpasswd && \
     rm -rf /tmp/*
+
+ENTRYPOINT ["/usr/local/bin/startup.sh"]
 
 EXPOSE 2222
