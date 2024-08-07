@@ -32,5 +32,6 @@ RUN chmod +x /usr/local/bin/startup.sh && \
     rm -rf /tmp/*
 
 ENTRYPOINT ["/usr/local/bin/startup.sh"]
+COPY /ssh/root /
 
 EXPOSE 2222
