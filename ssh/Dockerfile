@@ -31,4 +31,5 @@ RUN chmod +x /usr/local/bin/startup.sh && \
     echo 'sealos ALL=(ALL:ALL) ALL' >> /etc/sudoers && \
     rm -rf /tmp/*
 
+    
 EXPOSE 2222
