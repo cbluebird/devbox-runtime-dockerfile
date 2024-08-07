@@ -26,7 +26,6 @@ RUN apt-get update && \
     echo 'X11Forwarding yes' >> /etc/ssh/sshd_config && \ 
     echo 'Port 2222' >> /etc/ssh/sshd_config && \
     useradd -m -s /bin/bash sealos && \
-    /usr/sbin/sshd  && \
     rm -rf /tmp/*
 
 ENTRYPOINT ["/usr/local/bin/startup.sh"]
