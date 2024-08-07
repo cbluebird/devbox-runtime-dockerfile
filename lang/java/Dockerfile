@@ -1,5 +1,5 @@
 # Use a base image with the specified platform
-FROM ghcr.io/cbluebird/devbox/devbox-system:latest
+FROM ghcr.io/cbluebird/devbox/devbox-ssh:latest
 
 # Install OpenJDK 17 and other necessary tools in a single layer
 RUN apt-get update && \
@@ -16,16 +16,12 @@ RUN apt-get update && \
     ln -s /opt/maven/latest/bin/mvn /usr/bin/mvn && \
     rm /tmp/apache-maven-3.8.6-bin.tar.gz && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    echo 'export PATH=$PATH:$JAVA_HOME/bin' >> /home/sealos/.bashrc && \
+    echo 'export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64' >> /home/sealos/.bashrc
 
 COPY /lang/java/settings.xml /opt/maven/apache-maven-3.8.6/conf/settings.xml
 
 # Set Java environment variables
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV PATH=$PATH:$JAVA_HOME/bin
-
-# Set default working directory
-WORKDIR /root
-
-# Entry point (modifiable as needed)
-CMD ["/bin/bash"]
