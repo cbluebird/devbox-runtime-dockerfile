@@ -25,11 +25,11 @@ RUN chmod +x /usr/local/bin/startup.sh && \
     echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config && \
     echo 'GatewayPorts yes' >> /etc/ssh/sshd_config && \
     echo 'X11Forwarding yes' >> /etc/ssh/sshd_config && \ 
-    echo 'Port 2222' >> /etc/ssh/sshd_config && \
+    echo 'Port 22' >> /etc/ssh/sshd_config && \
     useradd -m -s /bin/bash sealos && \
     usermod -aG root sealos && \
     echo 'sealos ALL=(ALL:ALL) ALL' >> /etc/sudoers && \
     rm -rf /tmp/*
 
     
-EXPOSE 2222
+EXPOSE 22
