@@ -27,7 +27,7 @@ RUN chmod +x /usr/local/bin/startup.sh && \
     echo 'X11Forwarding yes' >> /etc/ssh/sshd_config && \ 
     echo 'Port 22' >> /etc/ssh/sshd_config && \
     useradd -m -s /bin/bash sealos && \
-    usermod -aG root sealos && \
+    usermod -aG sudo sealos && \
     echo 'sealos ALL=(ALL:ALL) ALL' >> /etc/sudoers && \
     rm -rf /tmp/*
 
