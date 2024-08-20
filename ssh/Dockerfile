@@ -1,9 +1,6 @@
 FROM ghcr.io/cbluebird/devbox/devbox-system:latest
 
-# set version label
-
-
-COPY /ssh/startup.sh /usr/local/bin/startup.sh
+COPY /ssh/startup.sh /usr/start/startup.sh
 
 RUN chmod +x /usr/local/bin/startup.sh && \
     apt-get update && \
@@ -31,5 +28,6 @@ RUN chmod +x /usr/local/bin/startup.sh && \
     echo 'sealos ALL=(ALL:ALL) ALL' >> /etc/sudoers && \
     rm -rf /tmp/*
 
+ENTRYPOINT ["sudo", "-E", "/usr/start/startup.sh"]
     
 EXPOSE 22
