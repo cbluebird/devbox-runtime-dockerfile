@@ -11,7 +11,7 @@ RUN curl -O https://dl.google.com/go/go1.22.5.linux-amd64.tar.gz && \
     echo 'export PATH=$PATH:/usr/local/go/bin:/go/bin' >> /home/sealos/.bashrc && \
     echo 'export GOPROXY=https://goproxy.cn,direct' >> /home/sealos/.bashrc&& \
     chmod -R 777 /go
-    
+
 # Set environment variables
 ENV GOPATH=/go
 ENV PATH=$PATH:/usr/local/go/bin:/go/bin
