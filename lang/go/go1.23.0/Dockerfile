@@ -10,7 +10,7 @@ RUN curl -O https://dl.google.com/go/go1.23.0.linux-amd64.tar.gz && \
     echo 'export GOPATH=/go' >> /home/sealos/.bashrc && \
     echo 'export PATH=$PATH:/usr/local/go/bin:/go/bin' >> /home/sealos/.bashrc && \
     echo 'export GOPROXY=https://goproxy.cn,direct' >> /home/sealos/.bashrc
-
+    
 # Set environment variables
 ENV GOPATH=/go
 ENV PATH=$PATH:/usr/local/go/bin:/go/bin
