@@ -15,3 +15,4 @@ RUN curl -O https://dl.google.com/go/go1.22.5.linux-amd64.tar.gz && \
 ENV GOPATH=/go
 ENV PATH=$PATH:/usr/local/go/bin:/go/bin
 ENV GOPROXY=https://goproxy.cn,direct
+ENTRYPOINT ["sudo -E /usr/local/bin/startup.sh"]
