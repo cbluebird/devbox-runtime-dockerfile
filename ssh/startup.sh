@@ -17,6 +17,6 @@ if [ ! -f "${PASSWORD_FILE}" ]; then
     # Display the password for logging purposes (optional)
     echo "SEALOS_DEVBOX_PASSWORD=${SEALOS_DEVBOX_PASSWORD}"
 fi
-
 # Start the SSH daemon
-/usr/sbin/sshd 
+/usr/sbin/sshd
+sleep infinity 
