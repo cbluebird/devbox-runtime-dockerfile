@@ -7,4 +7,4 @@ sudo echo "sealos:${USER_PASSWORD}" | chpasswd
 
 /usr/sbin/sshd 
 
-tail -f /dev/null
+sleep Inf
