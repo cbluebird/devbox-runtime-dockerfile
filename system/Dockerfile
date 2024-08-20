@@ -12,6 +12,7 @@ RUN apt update && \
     openssl \
     make \
     git && \
+    mkdir -p /usr/start && \
     # Clean up apt cache
     apt clean
 
