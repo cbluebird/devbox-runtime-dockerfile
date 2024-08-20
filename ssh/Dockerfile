@@ -2,7 +2,7 @@ FROM ghcr.io/cbluebird/devbox/devbox-system:latest
 
 COPY /ssh/startup.sh /usr/start/startup.sh
 
-RUN chmod +x /usr/local/bin/startup.sh && \
+RUN chmod +x /usr/start/startup.sh && \
     apt-get update && \
     apt-get install -y \
     logrotate \
