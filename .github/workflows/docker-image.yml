@@ -44,9 +44,11 @@ jobs:
 
     - name: Build and push Docker image
       run: |
+        TAG=${COMMIT_ID::6}
         chmod +x script/build_and_push_images.sh
-        script/build_and_push_images.sh
+        script/build_and_push_images.sh $TAG
       env:
         DOCKER_USERNAME: ${{ secrets.USERNAME }}
+        COMMIT_ID: ${{ github.sha }}
       shell: bash
 

@@ -4,6 +4,9 @@
 echo "PARENT_DIRS=$PARENT_DIRS"
 echo "DIFF_OUTPUT=$DIFF_OUTPUT"
 
+TAG=$1
+echo "TAG=$TAG"
+
 # 将环境变量读取为数组
 IFS=',' read -r -a DIFF_OUTPUT_ARRAY <<< "$DIFF_OUTPUT"
 IFS=',' read -r -a PARENT_DIRS_ARRAY <<< "$PARENT_DIRS"
@@ -16,11 +19,11 @@ echo "PARENT_DIRS array: ${PARENT_DIRS_ARRAY[@]}"
 for i in "${!DIFF_OUTPUT_ARRAY[@]}"; do
   DOCKERFILE_PATH=${DIFF_OUTPUT_ARRAY[$i]}
   PARENT_DIR=${PARENT_DIRS_ARRAY[$i]}
-  TAG="devbox-$PARENT_DIR:latest"
-  echo "Building and pushing image for $DOCKERFILE_PATH with tag $TAG and user as $DOCKER_USERNAME"
+  IMAGE_NAME="$PARENT_DIR:$TAG"
+  echo "Building and pushing image for $DOCKERFILE_PATH with tag $IMAGE_NAME and user as $DOCKER_USERNAME"
   docker buildx build --push \
     --file $DOCKERFILE_PATH \
     --platform linux/amd64\
-    --tag "ghcr.io/$DOCKER_USERNAME/devbox/$TAG" \
+    --tag "ghcr.io/$DOCKER_USERNAME/devbox/$IMAGE_NAME" \
     .
 done
