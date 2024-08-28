@@ -1,5 +1,5 @@
 # Use a base image with the specified platform
-FROM ghcr.io/cbluebird/devbox/ssh:9ea8cf
+FROM ghcr.io/cbluebird/devbox/ssh:1da39d
 
 # Install OpenJDK 17 and other necessary tools in a single layer
 RUN apt-get update && \
