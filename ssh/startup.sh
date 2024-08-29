@@ -18,8 +18,8 @@ if [ ! -f "${PASSWORD_FILE}" ]; then
     echo "SEALOS_DEVBOX_PASSWORD=${SEALOS_DEVBOX_PASSWORD}"
 fi
 
-if [ -f /usr/start/.ssh/id_rsa.pub ]; then
-    public_key=$(cat /usr/start/.ssh/id_rsa.pub)
+if [ -f /usr/start/.ssh/id.pub ]; then
+    public_key=$(cat /usr/start/.ssh/id.pub)
     if ! grep -qF "$public_key" /home/sealos/.ssh/authorized_keys 2>/dev/null; then
         mkdir -p /home/sealos/.ssh 
         echo "$public_key" >> /home/sealos/.ssh/authorized_keys
