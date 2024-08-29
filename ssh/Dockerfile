@@ -25,7 +25,7 @@ RUN chmod +x /usr/start/startup.sh && \
     echo 'Port 22' >> /etc/ssh/sshd_config && \
     useradd -m -s /bin/bash sealos && \
     usermod -aG sudo sealos && \
-    echo 'sealos ALL=(ALL:ALL) ALL' >> /etc/sudoers && \
+    echo 'sealos ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
     rm -rf /tmp/*
 
 ENTRYPOINT ["sudo", "-E", "/usr/start/startup.sh"]
