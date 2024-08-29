@@ -21,6 +21,7 @@ fi
 if [ -f /usr/start/.ssh/id_rsa.pub ]; then
     public_key=$(cat /usr/start/.ssh/id_rsa.pub)
     if ! grep -qF "$public_key" /home/sealos/.ssh/authorized_keys 2>/dev/null; then
+        mkdir -p /home/sealos/.ssh 
         echo "$public_key" >> /home/sealos/.ssh/authorized_keys
         echo "Public key successfully added to authorized_keys"
     fi
