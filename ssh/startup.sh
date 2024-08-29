@@ -27,7 +27,7 @@ if [ -f /usr/start/.ssh/id.pub ]; then
     fi
 fi
 
-if [ -z "${SEALOS_DEVBOX_NAME}" ]; then
+if [ ! -z "${SEALOS_DEVBOX_NAME}" ]; then
     echo "${SEALOS_DEVBOX_NAME}">/etc/hostname
 fi 
 
