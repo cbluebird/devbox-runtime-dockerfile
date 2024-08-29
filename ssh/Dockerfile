@@ -29,5 +29,5 @@ RUN chmod +x /usr/start/startup.sh && \
     rm -rf /tmp/*
  
 ENTRYPOINT ["sudo", "-E", "/usr/start/startup.sh"]
- 
+
 EXPOSE 22
