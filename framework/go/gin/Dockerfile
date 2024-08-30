@@ -1,5 +1,5 @@
 # Use a base image with the specified platform
-FROM ghcr.io/cbluebird/devbox/go1.22.5:a253b9
+FROM ghcr.io/cbluebird/devbox/go1.22.5:674235
 
 COPY /framework/go/gin/project /home/sealos/project
  
