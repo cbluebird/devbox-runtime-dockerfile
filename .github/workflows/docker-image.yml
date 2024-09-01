@@ -62,7 +62,8 @@ jobs:
       run: |
         git config --global user.email "crk2778355976@163.com"
         git config --global user.name "cbluebird"
-        git commit -am "generate runtime yaml"
+        git add yaml/
+        git commit -m "generate runtime yaml"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
