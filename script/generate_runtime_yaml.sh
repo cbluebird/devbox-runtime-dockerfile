@@ -36,7 +36,7 @@ metadata:
   name: $PARENT_DIR
 spec:
   title: $PARENT_DIR
-  kind: "${ADDR[1]}"
+  kind: "${ADDR[0]}"
   description: $PARENT_DIR
 EOF
 done

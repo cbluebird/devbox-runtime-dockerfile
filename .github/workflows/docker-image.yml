@@ -58,6 +58,9 @@ jobs:
         TAG=${COMMIT_ID::6}
         chmod +x script/generate_runtime_yaml.sh
         script/generate_runtime_yaml.sh $TAG
+      env:
+        COMMIT_ID: ${{ github.sha }}
+      shell: bash
     - name: Commit runtime yaml
       run: |
         git config --global user.email "crk2778355976@163.com"
