@@ -59,6 +59,7 @@ jobs:
         chmod +x script/generate_runtime_yaml.sh
         script/generate_runtime_yaml.sh $TAG
       env:
+        DOCKER_USERNAME: ${{ secrets.USERNAME }}
         COMMIT_ID: ${{ github.sha }}
       shell: bash
     - name: Commit runtime yaml
