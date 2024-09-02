@@ -17,26 +17,27 @@ for i in "${!DIFF_OUTPUT_ARRAY[@]}"; do
   PARENT_DIR=${PARENT_DIRS_ARRAY[$i]}
   IMAGE_NAME="$PARENT_DIR:$TAG"
 
-  mkdir -p "yaml/${PARENT_DIR}"
-  touch "yaml/${PARENT_DIR}/runtime-$PARENT_DIR.yaml"
-  cat << EOF > "yaml/${PARENT_DIR}/runtime-$PARENT_DIR.yaml"
+  PATH=${path%/*}
+  mkdir -p "yaml/${PATH}"
+  touch "yaml/${PATH}/runtime-$PARENT_DIR.yaml"
+  cat << EOF > "yaml/${PATH}/runtime-$PARENT_DIR.yaml"
 apiVersion: devbox.sealos.io/v1alpha1
 kind: Runtime
 metadata:
   name: $PARENT_DIR
 spec:
   title: $PARENT_DIR
-  classRef: $PARENT_DIR
+  classRef: ${ADDR[1]}
   image: "ghcr.io/$DOCKER_USERNAME/devbox/$IMAGE_NAME"
-  description: $PARENT_DIR
+  description: "$PARENT_DIR"
 ---
 apiVersion: devbox.sealos.io/v1alpha1
 kind: RuntimeClass
 metadata:
-  name: $PARENT_DIR
+  name: ${ADDR[1]}
 spec:
-  title: $PARENT_DIR
-  kind: "${ADDR[0]}"
-  description: $PARENT_DIR
+  title: ${ADDR[1]}
+  kind: ${ADDR[0]}
+  description: "${ADDR[1]}"
 EOF
 done
