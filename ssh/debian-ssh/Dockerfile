@@ -25,7 +25,7 @@ RUN chmod +x /usr/start/startup.sh && \
     usermod -aG sudo sealos && \
     echo 'sealos ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
     rm -rf /tmp/*
-  
+   
 ENTRYPOINT ["sudo", "-E", "/usr/start/startup.sh"]
 
 EXPOSE 22
