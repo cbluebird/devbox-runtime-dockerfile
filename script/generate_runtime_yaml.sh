@@ -17,10 +17,10 @@ for i in "${!DIFF_OUTPUT_ARRAY[@]}"; do
   PARENT_DIR=${PARENT_DIRS_ARRAY[$i]}
   IMAGE_NAME="$PARENT_DIR:$TAG"
 
-  PATH="${DOCKERFILE_PATH%/*}"
-  mkdir -p "yaml/${PATH}"
-  touch "yaml/${PATH}/runtime-$PARENT_DIR.yaml"
-  cat << EOF > "yaml/${PATH}/runtime-$PARENT_DIR.yaml"
+  YAML_PATH="${DOCKERFILE_PATH%/*}"
+  mkdir -p "yaml/${YAML_PATH}"
+  touch "yaml/${YAML_PATH}/runtime-$PARENT_DIR.yaml"
+  cat << EOF > "yaml/${YAML_PATH}/runtime-$PARENT_DIR.yaml"
 apiVersion: devbox.sealos.io/v1alpha1
 kind: Runtime
 metadata:
