@@ -1,5 +1,5 @@
 # Use a base image with the specified platform
-FROM ghcr.io/cbluebird/devbox/debian-ssh:614282
+FROM ghcr.io/cbluebird/devbox/debian-ssh:581098
 
 # Install OpenJDK 17 and other necessary tools in a single layer
 RUN apt-get update && \
