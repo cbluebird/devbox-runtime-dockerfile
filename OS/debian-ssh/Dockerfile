@@ -1,6 +1,6 @@
 FROM ghcr.io/cbluebird/devbox/debian:28d4a8
 
-COPY /ssh/startup.sh /usr/start/startup.sh
+COPY /script/startup.sh /usr/start/startup.sh
 
 RUN chmod +x /usr/start/startup.sh && \
     apt-get update && \
