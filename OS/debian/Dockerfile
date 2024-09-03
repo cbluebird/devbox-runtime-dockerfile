@@ -8,6 +8,8 @@ RUN apt update && \
     iproute2 \
     iputils-ping \
     curl \
+    sudo \
+    netcat-openbsd \
     vim \
     openssl \
     make \
