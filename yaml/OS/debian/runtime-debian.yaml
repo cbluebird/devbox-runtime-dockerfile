@@ -1,0 +1,21 @@
+apiVersion: devbox.sealos.io/v1alpha1
+kind: Runtime
+metadata:
+  name: debian
+spec:
+  title: debian
+  classRef: debian
+  description: "debian"
+  config:
+    user: sealos
+    image: ghcr.io/cbluebird/devbox/debian:28d4a8
+  category:
+---
+apiVersion: devbox.sealos.io/v1alpha1
+kind: RuntimeClass
+metadata:
+  name: debian
+spec:
+  title: debian
+  kind: OS
+  description: "debian"
