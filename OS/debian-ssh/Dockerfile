@@ -1,22 +1,16 @@
-FROM ghcr.io/cbluebird/devbox/debian:682bdd
+FROM ghcr.io/cbluebird/devbox/debian:28d4a8
 
 COPY /ssh/startup.sh /usr/start/startup.sh
 
 RUN chmod +x /usr/start/startup.sh && \
     apt-get update && \
     apt-get install -y \
-    nano \
-    sudo \
     openssh-client \
     openssh-server && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /run/sshd  && \
     chmod 755 /run/sshd && \
-    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/g' /etc/ssh/sshd_config && \
-    sed -i 's/AllowTcpForwarding no/AllowTcpForwarding yes/g' /etc/ssh/sshd_config && \
-    sed -i 's/GatewayPorts no/GatewayPorts yes/g' /etc/ssh/sshd_config && \
-    sed -i 's/X11Forwarding no/X11Forwarding yes/g' /etc/ssh/sshd_config && \
     echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config && \
     echo 'GatewayPorts yes' >> /etc/ssh/sshd_config && \
     echo 'X11Forwarding yes' >> /etc/ssh/sshd_config && \ 
@@ -25,7 +19,7 @@ RUN chmod +x /usr/start/startup.sh && \
     usermod -aG sudo sealos && \
     echo 'sealos ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
     rm -rf /tmp/*
-   
+  
 ENTRYPOINT ["sudo", "-E", "/usr/start/startup.sh"]
 
 EXPOSE 22
