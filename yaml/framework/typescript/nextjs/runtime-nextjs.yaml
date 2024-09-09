@@ -1,0 +1,21 @@
+apiVersion: devbox.sealos.io/v1alpha1
+kind: Runtime
+metadata:
+  name: nextjs
+spec:
+  title: nextjs
+  classRef: typescript
+  description: "nextjs"
+  config:
+    user: sealos
+    image: ghcr.io/cbluebird/devbox/nextjs:7ed651
+  category:
+---
+apiVersion: devbox.sealos.io/v1alpha1
+kind: RuntimeClass
+metadata:
+  name: typescript
+spec:
+  title: typescript
+  kind: framework
+  description: "typescript"

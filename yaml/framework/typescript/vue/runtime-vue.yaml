@@ -1,0 +1,21 @@
+apiVersion: devbox.sealos.io/v1alpha1
+kind: Runtime
+metadata:
+  name: vue
+spec:
+  title: vue
+  classRef: typescript
+  description: "vue"
+  config:
+    user: sealos
+    image: ghcr.io/cbluebird/devbox/vue:7ed651
+  category:
+---
+apiVersion: devbox.sealos.io/v1alpha1
+kind: RuntimeClass
+metadata:
+  name: typescript
+spec:
+  title: typescript
+  kind: framework
+  description: "typescript"
