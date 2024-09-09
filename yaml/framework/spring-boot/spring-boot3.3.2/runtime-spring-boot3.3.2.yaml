@@ -1,0 +1,21 @@
+apiVersion: devbox.sealos.io/v1alpha1
+kind: Runtime
+metadata:
+  name: spring-boot3-3-2
+spec:
+  title: spring-boot3.3.2
+  classRef: spring-boot
+  description: "spring-boot3.3.2"
+  config:
+    user: sealos
+    image: ghcr.io/cbluebird/devbox/spring-boot3.3.2:b9d3b5
+  category:
+---
+apiVersion: devbox.sealos.io/v1alpha1
+kind: RuntimeClass
+metadata:
+  name: spring-boot
+spec:
+  title: spring-boot
+  kind: framework
+  description: "spring-boot"
