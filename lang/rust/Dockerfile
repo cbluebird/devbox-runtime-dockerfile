@@ -1,10 +1,13 @@
-# Use a base image with the specified platform
-FROM ghcr.io/cbluebird/devbox/ssh:9ea8cf
+FROM ghcr.io/labring-actions/devbox/debian-ssh:d8f335
 
-# Install Rust and other necessary tools in a single layer
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && \
-    apt-get update && \
-    apt-get install -y  build-essential  && \
+USER sealos
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y 
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y build-essential && \
     apt-get clean && \
-    echo 'export PATH=/root/.cargo/bin:$PATH' >> /home/sealos/.bashrc && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    echo 'export PATH=/home/sealos/.cargo/bin:$PATH' >> $HOME/.bashrc && \
+    echo 'source /home/sealos/.cargo/env' >> $HOME/.bashrc
