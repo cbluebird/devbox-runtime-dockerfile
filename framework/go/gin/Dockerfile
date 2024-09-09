@@ -7,3 +7,5 @@ RUN chown -R sealos:sealos /home/sealos/project && \
 chmod -R u+rw /home/sealos/project
 
 RUN mkdir /home/sealos/.sealos
+
+WORKDIR /home/sealos/project
