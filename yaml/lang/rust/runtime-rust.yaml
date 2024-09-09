@@ -1,0 +1,21 @@
+apiVersion: devbox.sealos.io/v1alpha1
+kind: Runtime
+metadata:
+  name: rust
+spec:
+  title: rust
+  classRef: rust
+  description: "rust"
+  config:
+    user: sealos
+    image: ghcr.io/cbluebird/devbox/rust:ce0231
+  category:
+---
+apiVersion: devbox.sealos.io/v1alpha1
+kind: RuntimeClass
+metadata:
+  name: rust
+spec:
+  title: rust
+  kind: lang
+  description: "rust"
