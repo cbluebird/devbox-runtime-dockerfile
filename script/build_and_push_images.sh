@@ -21,6 +21,6 @@ for i in "${!DIFF_OUTPUT_ARRAY[@]}"; do
   docker buildx build --push \
     --file $DOCKERFILE_PATH \
     --platform linux/amd64\
-    --tag "ghcr.io/$USERNAME/devbox/$IMAGE_NAME" \
+    --tag "ghcr.io/$DOCKER_USERNAME/devbox/$IMAGE_NAME" \
     .
 done
