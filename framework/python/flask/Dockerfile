@@ -6,7 +6,7 @@ RUN chown -R sealos:sealos /home/sealos/project && \
     chmod -R u+rw /home/sealos/project && \
     python3 -m venv /home/sealos/project && \
     cd /home/sealos/project && \
-    source bin/activate && \
+    . bin/activate && \
     pip3 install flask && \
     deactivate 
 
