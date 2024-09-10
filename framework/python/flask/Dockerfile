@@ -1,11 +1,13 @@
-# Use a base image with the specified platform
-FROM ghcr.io/cbluebird/devbox/python3.12:09ca53
+FROM ghcr.io/labring-actions/devbox/python3.12:6e6ed1
 
-# 拷贝整个文件夹到镜像中的指定位置
 COPY /framework/python/flask/project /home/sealos/project
 
-RUN cd /home/sealos/project&&python3.12 -m venv env && \
-    chown -R sealos:sealos /home/sealos/project && \
-    chmod -R u+rw /home/sealos/project
+RUN chown -R sealos:sealos /home/sealos/project && \
+    chmod -R u+rw /home/sealos/project && \
+    python3 -m venv /home/sealos/project && \
+    cd /home/sealos/project && \
+    source bin/activate && \
+    pip3 install flask && \
+    deactivate 
 
 RUN mkdir /home/sealos/.sealos
