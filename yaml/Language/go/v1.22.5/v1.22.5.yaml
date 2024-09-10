@@ -1,0 +1,25 @@
+apiVersion: devbox.sealos.io/v1alpha1
+kind: Runtime
+metadata:
+  name: go-v1-22-5
+  namespace: devbox-system
+spec:
+  classRef: go
+  config:
+    image: ghcr.io/cbluebird/devbox/go-v1.22.5:da2636
+    ports:
+      - containerPort: 22
+        name: devbox-ssh-port
+        protocol: TCP
+    user: sealos
+  description: go v1.22.5
+  version: v1.22.5
+---
+apiVersion: devbox.sealos.io/v1alpha1
+kind: RuntimeClass
+metadata:
+  name: go
+spec:
+  title: go
+  kind: Language
+  description: "go"
