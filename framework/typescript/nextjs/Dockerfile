@@ -5,8 +5,8 @@ COPY /framework/typescript/nextjs/project /home/sealos/project
 RUN chown -R sealos:sealos /home/sealos/project && \
 chmod -R u+rw /home/sealos/project && \
 cd /home/sealos/project && \
-npm config set fetch-retry-maxtimeout 800000 && \
+npm config set fetch-retry-maxtimeout 1000000 && \
 npm install && \
-npm audit fix
+npm install -D @swc/cli @swc/core
 
 RUN mkdir /home/sealos/.sealos
