@@ -1,0 +1,25 @@
+apiVersion: devbox.sealos.io/v1alpha1
+kind: Runtime
+metadata:
+  name: typescript-nextjs
+  namespace: devbox-system
+spec:
+  classRef: typescript
+  config:
+    image: ghcr.io/cbluebird/devbox/typescript-nextjs:21f311
+    ports:
+      - containerPort: 22
+        name: devbox-ssh-port
+        protocol: TCP
+    user: sealos
+  description: typescript nextjs
+  version: nextjs
+---
+apiVersion: devbox.sealos.io/v1alpha1
+kind: RuntimeClass
+metadata:
+  name: typescript
+spec:
+  title: typescript
+  kind: framework
+  description: "typescript"
