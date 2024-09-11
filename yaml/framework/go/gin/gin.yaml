@@ -1,0 +1,25 @@
+apiVersion: devbox.sealos.io/v1alpha1
+kind: Runtime
+metadata:
+  name: go-gin
+  namespace: devbox-system
+spec:
+  classRef: go
+  config:
+    image: ghcr.io/cbluebird/devbox/go-gin:d451fa
+    ports:
+      - containerPort: 22
+        name: devbox-ssh-port
+        protocol: TCP
+    user: sealos
+  description: go gin
+  version: gin
+---
+apiVersion: devbox.sealos.io/v1alpha1
+kind: RuntimeClass
+metadata:
+  name: go
+spec:
+  title: go
+  kind: framework
+  description: "go"
