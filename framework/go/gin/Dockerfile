@@ -1,11 +1,15 @@
-# Use a base image with the specified platform
-FROM ghcr.io/cbluebird/devbox/go1.22.5:674235
+FROM ghcr.io/labring-actions/devbox/go-1.22.5:35bf93
+
+RUN cd /home/sealos/project && \
+rm -rf ./*
 
 COPY /framework/go/gin/project /home/sealos/project
- 
+
 RUN chown -R sealos:sealos /home/sealos/project && \
-chmod -R u+rw /home/sealos/project
+chmod -R u+rw /home/sealos/project  
+
+USER sealos
+RUN cd /home/sealos/project && \
+go mod tidy 
 
 RUN mkdir /home/sealos/.sealos
-
-WORKDIR /home/sealos/project
