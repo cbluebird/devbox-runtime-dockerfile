@@ -6,7 +6,7 @@ metadata:
 spec:
   classRef: typescript
   config:
-    image: ghcr.io/cbluebird/devbox/typescript-nextjs:21f311
+    image: ghcr.io/cbluebird/devbox/typescript-nextjs:6ce0a0
     ports:
       - containerPort: 22
         name: devbox-ssh-port
