@@ -1,4 +1,4 @@
-FROM ghcr.io/cbluebird/devbox/debian:28d4a8
+FROM ghcr.io/labring-actions/devbox/debian:ce4733
 
 COPY /script/startup.sh /usr/start/startup.sh
 
@@ -19,7 +19,14 @@ RUN chmod +x /usr/start/startup.sh && \
     usermod -aG sudo sealos && \
     echo 'sealos ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
     rm -rf /tmp/*
-  
+
+USER sealos
+COPY /OS/debian-ssh/project /home/sealos/project
+RUN sudo chown -R sealos:sealos /home/sealos/project && \
+    sudo chmod -R 777 /home/sealos/project
+
+USER root
 ENTRYPOINT ["sudo", "-E", "/usr/start/startup.sh"]
 
+WORKDIR /home/sealos/project
 EXPOSE 22
