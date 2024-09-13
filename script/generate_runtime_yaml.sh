@@ -60,7 +60,7 @@ kind: RuntimeClass
 metadata:
   name: ${ADDR[1]}
 spec:
-  title: "${$NAME_MAP[${ADDR[1]}]}"
+  title: "${NAME_MAP[${ADDR[1]}]}"
   kind: ${ADDR[0]}
   description: ${ADDR[1]}
 EOF

@@ -24,7 +24,7 @@ USER sealos
 COPY /OS/debian-ssh/project /home/sealos/project
 RUN sudo chown -R sealos:sealos /home/sealos/project && \
     sudo chmod -R 777 /home/sealos/project
-
+ 
 USER root
 ENTRYPOINT ["sudo", "-E", "/usr/start/startup.sh"]
 
