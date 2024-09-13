@@ -34,4 +34,3 @@ fi
 echo "${SEALOS_DEVBOX_POD_UID}">/usr/start/pod_id
 # Start the SSH daemon
 /usr/sbin/sshd
-sleep infinity 
