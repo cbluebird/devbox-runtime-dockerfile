@@ -6,7 +6,7 @@ metadata:
 spec:
   classRef: debian-ssh
   config:
-    image: ghcr.io/cbluebird/devbox/debian-ssh-12.6:da9663
+    image: ghcr.io/cbluebird/devbox/debian-ssh-12.6:1cbf5e
     ports:
       - containerPort: 22
         name: devbox-ssh-port
@@ -26,6 +26,6 @@ kind: RuntimeClass
 metadata:
   name: debian-ssh
 spec:
-  title: ""
+  title: "debian"
   kind: OS
   description: debian-ssh
