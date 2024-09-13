@@ -29,6 +29,6 @@ RUN sudo chown -R sealos:sealos /home/sealos/project && \
 USER root
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["sudo", "-E", "/usr/start/startup.sh"]
-
+ 
 WORKDIR /home/sealos/project
 EXPOSE 22
