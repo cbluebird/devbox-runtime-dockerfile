@@ -11,7 +11,7 @@ IFS=',' read -r -a PARENT_DIRS_ARRAY <<< "$PARENT_DIRS"
 
 declare -A NAME_MAP
 while IFS='=' read -r key value; do
-    my_map["$key"]="$value"
+    NAME_MAP["$key"]="$value"
 done < "configs/name.txt" 
 
 for i in "${!DIFF_OUTPUT_ARRAY[@]}"; do
