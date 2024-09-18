@@ -9,7 +9,7 @@ USER sealos
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y 
 
 USER root
-
+ 
 RUN apt-get update && \
     apt-get install -y build-essential && \
     apt-get clean && \
