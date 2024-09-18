@@ -25,4 +25,5 @@ ENV PATH="/home/sealos/.cargo/bin:${PATH}"
 RUN cd /home/sealos/project && \
     cargo build --release
 
-RUN mkdir /root/.sealos
+USER root
+RUN mkdir /home/.sealos
