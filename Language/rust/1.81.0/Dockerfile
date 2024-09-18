@@ -21,6 +21,7 @@ RUN apt-get update && \
     chmod -R +x /home/sealos/project/entrypoint.sh
 
 USER sealos
+ENV PATH="/home/sealos/.cargo/bin:${PATH}"
 RUN cd /home/sealos/project && \
     cargo build --release
 
