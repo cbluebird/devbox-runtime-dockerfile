@@ -28,8 +28,8 @@ for i in "${!DIFF_OUTPUT_ARRAY[@]}"; do
 
   YAML_PATH="${DOCKERFILE_PATH%/*}"
 
-  mkdir -p "en/yaml/${YAML_PATH}"
-  mkdir -p "cn/yaml/${YAML_PATH}"
+  mkdir -p "yaml/en/${YAML_PATH}"
+  mkdir -p "yaml/cn/${YAML_PATH}"
   en_output_file="yaml/en/${YAML_PATH}/$PARENT_DIR.yaml"
   cn_output_file="yaml/cn/${YAML_PATH}/$PARENT_DIR.yaml"
   if [ ! -f "$en_output_file" ]; then
